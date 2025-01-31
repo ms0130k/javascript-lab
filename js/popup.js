@@ -1,3 +1,20 @@
+//팝업창을 띄우고, 콜백을 실행하는 모듈
+//사용법
+//popupManager.open({
+//  url: '팝업창에 띄울 페이지 주소',
+//  name: '팝업창 이름',
+//  type: 'GET' or 'POST',
+//  popupFeatures: {width: 50, height: 50},
+//  params: {팝업창에 전달할 파라미터},
+//  callbacks: {
+//    콜백함수 이름: function ({request, response}) {
+//      //콜백 실행 내용
+//    }
+//  }
+//});
+//popupManager.runCallback('팝업창 이름', '팝업창에서 전달받은 데이터', '콜백함수 이름');
+//팝업창에서는 window.opener.popupManager.runCallback('팝업창 이름', '팝업창에서 전달받은 데이터', '콜백함수 이름'); 을 통해 콜백을 실행할 수 있음
+
 window.popupManager = (function () {
   const paramMap = new Map();
   const callbacksMap = new Map();
