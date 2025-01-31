@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../js/popup.js"></script>
+  <title>Document</title>
+</head>
+<body>
+<button type="button" id="btn1">팝업1</button>
+<button type="button" id="btn2">팝업2</button>
+<button type="button" id="btn3">팝업3</button>
+<script>
+  const btn1 = document.getElementById('btn1');
+  const btn2 = document.getElementById('btn2');
+  const btn3 = document.getElementById('btn3');
+  btn1.addEventListener('click', clickBtn1);
+  btn2.addEventListener('click', clickBtn2);
+  btn3.addEventListener('click', clickBtn3);
+
+  function clickBtn1() {
+    popupManager.open({
+      url: 'popup-child1.html',
+      name: 'child1',
+      popupFeatures: {width: 500, height: 500},
+      params: {
+        name: 'test',
+        age: 20,
+      },
+      callbacks: {
+        message1(data) {
+          console.log('message1', data);
+        },
+        message2(data) {
+          console.log('message2', data);
+        },
+      }
+    });
+  }
+
+  function clickBtn2() {
+    popupManager.open({
+      url: 'popup-child2.html',
+      name: 'child2',
+      popupFeatures: {width: 700, height: 700},
+      params: {
+        name: 'child2',
+        age: 290,
+      },
+      callbacks: {
+        get1(data) {
+          console.log('get1', data);
+        },
+        get2(data) {
+          console.log('get2', data);
+        },
+      }
+    });
+  }
+
+  function clickBtn3() {
+    popupManager.open({
+      url: 'popup-child3.html',
+      name: 'child3',
+      type: 'GET',
+      popupFeatures: {width: 700, height: 700},
+      params: {
+        name: 'child2',
+        age: 290,
+      },
+      callbacks: console.log
+    });
+  }
+</script>
+</body>
+</html>
